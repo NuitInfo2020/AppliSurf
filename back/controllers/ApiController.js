@@ -1,8 +1,9 @@
 const User = require("../models/user");
 const Place = require("../models/place");
+const Grade = require("../models/grade");
 
 const user_create = (req, res) => {
-    console.log("Create user")
+  console.log("Create user");
   const nickname = req.body.nickname;
   const password = req.body.password;
   const mail = req.body.mail;
@@ -14,8 +15,11 @@ const user_create = (req, res) => {
   });
   user
     .save()
-    .then((result) => {})
+    .then((result) => {
+      res.json({ success: true });
+    })
     .catch((err) => {
+      res.json({ success: false });
       console.log(err);
     });
 };
@@ -32,8 +36,11 @@ const place_create = (req, res) => {
   });
   place
     .save()
-    .then((result) => {})
+    .then((result) => {
+      res.json({ success: true });
+    })
     .catch((err) => {
+      res.json({ success: false });
       console.log(err);
     });
 };
@@ -44,7 +51,28 @@ const place_get_all = (req, res) => {
   });
 };
 
-const grade_create = (req, res) => {};
+const grade_create = (req, res) => {
+  const id_place = req.body.id_place;
+  const id_user = req.body.longitude;
+  const note = req.body.note;
+  const comment = req.body.comment;
+
+  const grade = new Grade({
+    id_place: id_place,
+    id_user: id_user,
+    note: note,
+    comment: comment,
+  });
+  grade
+    .save()
+    .then((result) => {
+      res.json({ success: true });
+    })
+    .catch((err) => {
+      res.json({ success: false });
+      console.log(err);
+    });
+};
 
 const grade_get_all = (req, res) => {};
 
