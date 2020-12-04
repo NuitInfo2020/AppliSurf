@@ -1,12 +1,13 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
+  <div>
+    <h1>Bienvenue sur la page d'acceuil</h1>
+    <router-link to="/Inscription">S'inscrire</router-link>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app'
+  name: 'home'
 }
 </script>
 
